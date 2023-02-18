@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {Card, Typography} from "@mui/material";
 import {useAppDispatch} from "../../hooks/UseAppDispatch";
-import {deleteNewsItem} from "../../common/components/news/News-reducer";
+import {deleteNewsItem} from "../../features/components/news/News-reducer";
 
 type PropsType = {
     id: number,

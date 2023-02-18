@@ -2,9 +2,9 @@ import {AnyAction, combineReducers} from "redux";
 import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk'
 import {configureStore} from "@reduxjs/toolkit";
 import {appReducer} from "../App-reducer";
-import {newsReducer} from "../../common/components/news/News-reducer";
-import {profileReducer} from "../../common/components/profile/Profile-reducer";
-import {authReducer} from "../../common/components/auth/Auth-reducer";
+import {newsReducer} from "../../features/components/news/News-reducer";
+import {profileReducer} from "../../features/components/profile/Profile-reducer";
+import {authReducer} from "../../features/components/auth/Auth-reducer";
 
 
 const rootReducer = combineReducers({

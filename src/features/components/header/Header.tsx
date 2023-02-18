@@ -1,12 +1,12 @@
 import React, {ChangeEvent, FC} from 'react';
-import {AppBar, Box, LinearProgress, Switch, Toolbar} from "@mui/material";
-import {useAppSelector} from "../../../hooks/UseAppSelector";
-import {useNavigate} from "react-router-dom";
-import {OutlinedBtn} from "../../../features/components/OutlinedBtn";
-import {useAppDispatch} from "../../../hooks/UseAppDispatch";
-import {logout} from "../auth/Auth-reducer";
-import {useTranslation} from "react-i18next";
+import {OutlinedBtn} from "../../../common/components/OutlinedBtn";
 import {useAppStatusSelector} from "../../../hooks/Selectors";
+import {useAppDispatch} from "../../../hooks/UseAppDispatch";
+import {useAppSelector} from "../../../hooks/UseAppSelector";
+import {logout} from "../auth/Auth-reducer";
+import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {AppBar, Box, LinearProgress, Switch, Toolbar} from "@mui/material";
 
 
 export const Header: FC = () => {

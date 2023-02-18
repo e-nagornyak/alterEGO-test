@@ -1,12 +1,13 @@
 import React, {FC, useEffect} from 'react';
-import './App.css';
-import {Header} from "../common/components/header/Header";
-import {RoutesPage} from "../common/components/routes-page/RoutesPage";
-import {CircularProgress, Paper} from "@mui/material";
-import {ErrorSnackbar} from "../features/components/ErrorSnackBar";
 import {useAppDispatch} from "../hooks/UseAppDispatch";
 import {useAppSelector} from "../hooks/UseAppSelector";
-import {authMe} from "../common/components/auth/Auth-reducer";
+import {ErrorSnackbar} from "../common/components/ErrorSnackBar";
+import {RoutesPage} from "../features/components/routes-page/RoutesPage";
+import {Header} from "../features/components/header/Header";
+import {authMe} from "../features/components/auth/Auth-reducer";
+import {CircularProgress, Paper} from "@mui/material";
+
+import './App.css';
 
 export const App: FC = () => {
     const dispatch = useAppDispatch()

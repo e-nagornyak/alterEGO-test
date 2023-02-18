@@ -1,6 +1,6 @@
 import React, {FC, useCallback, useEffect} from 'react';
-import {OutlinedBtn} from "../../../features/components/OutlinedBtn";
-import {CardItem} from "../../../features/components/CardItem";
+import {OutlinedBtn} from "../../../common/components/OutlinedBtn";
+import {CardItem} from "../../../common/components/CardItem";
 import {useAppSelector} from "../../../hooks/UseAppSelector";
 import {useAppDispatch} from "../../../hooks/UseAppDispatch";
 import {getMoreNews, getNews} from "./News-reducer";
