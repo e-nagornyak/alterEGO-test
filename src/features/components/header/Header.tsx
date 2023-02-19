@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC} from 'react';
+import React, {ChangeEvent, FC, memo, useCallback} from 'react';
 import {OutlinedBtn} from "../../../common/components/OutlinedBtn";
 import {useAppStatusSelector} from "../../../hooks/Selectors";
 import {useAppDispatch} from "../../../hooks/UseAppDispatch";
@@ -9,7 +9,7 @@ import {useTranslation} from "react-i18next";
 import {AppBar, Box, LinearProgress, Switch, Toolbar} from "@mui/material";
 
 
-export const Header: FC = () => {
+export const Header: FC = memo(() => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const {t, i18n} = useTranslation();
@@ -18,8 +18,14 @@ export const Header: FC = () => {
     const status = useAppStatusSelector()
 
 
-    const logoutHandler = () => dispatch(logout())
-    const changeLangHandler = (e: ChangeEvent<HTMLInputElement>) => i18n.changeLanguage(e.target.checked ? 'en' : 'ua')
+    const logoutHandler = useCallback(() => dispatch(logout()),[dispatch])
+    const changeLangHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => i18n.changeLanguage(e.target.checked ? 'en' : 'ua'),[i18n])
+    const navigateToMainHandler = useCallback(() => navigate('/main'), [navigate])
+    const navigateToNewsHandler = useCallback(() => navigate('/news'), [navigate])
+    const navigateToProfileHandler = useCallback(() => navigate('/profile'), [navigate])
+    const navigateToAuthHandler = useCallback(() => navigate('/auth'), [navigate])
+
+
 
     return <Box>
         <AppBar position="fixed">
@@ -30,11 +36,11 @@ export const Header: FC = () => {
                     <span>ENG</span>
                 </Box>
                 <Box sx={{display: 'flex'}} gap={'15px'}>
-                    <OutlinedBtn title={t('main-btn')} onClick={() => navigate('/main')}/>
-                    <OutlinedBtn title={t('news-btn')} onClick={() => navigate('/news')}/>
+                    <OutlinedBtn title={t('main-btn')} onClick={navigateToMainHandler}/>
+                    <OutlinedBtn title={t('news-btn')} onClick={navigateToNewsHandler}/>
                     {isLogged
-                        ? <OutlinedBtn title={t('profile-btn')} onClick={() => navigate('/profile')}/>
-                        : <OutlinedBtn title={t('login-btn')} onClick={() => navigate('/auth')}/>
+                        ? <OutlinedBtn title={t('profile-btn')} onClick={navigateToProfileHandler}/>
+                        : <OutlinedBtn title={t('login-btn')} onClick={navigateToAuthHandler}/>
                     }
                     {isLogged && <OutlinedBtn title={t('logout-btn')} onClick={logoutHandler}/>}
                 </Box>
@@ -42,5 +48,5 @@ export const Header: FC = () => {
             {status === 'loading' && <LinearProgress color={'primary'}/>}
         </AppBar>
     </Box>
-};
+});
 

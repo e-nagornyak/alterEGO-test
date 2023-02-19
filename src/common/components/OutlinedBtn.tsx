@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import {Button} from "@mui/material";
 
 type PropsType = {
@@ -7,7 +7,7 @@ type PropsType = {
     className?: string
 }
 
-export const OutlinedBtn: FC<PropsType> = ({className,onClick, title}) => {
+export const OutlinedBtn: FC<PropsType> = memo(({className,onClick, title}) => {
     return <Button className={className} color={'inherit'} onClick={onClick} variant="outlined">{title}</Button>
-};
+});
 
