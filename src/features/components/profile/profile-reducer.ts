@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-
 const initialState = {
     name: 'Evhen Nahorniak',
     email: 'test@gmail.com',

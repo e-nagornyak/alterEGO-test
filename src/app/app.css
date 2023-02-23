@@ -48,12 +48,13 @@
 }
 
 .news-box {
+    min-height: 75vh;
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    align-content: center;
+    align-content: flex-start;
     margin-bottom: 15px;
 }
 

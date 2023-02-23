@@ -1,17 +1,15 @@
 import React, {FC, useEffect} from 'react';
-import {useAppDispatch} from "../hooks/UseAppDispatch";
-import {useAppSelector} from "../hooks/UseAppSelector";
-import {ErrorSnackbar} from "../common/components/ErrorSnackBar";
-import {RoutesPage} from "../features/components/routes-page/RoutesPage";
-import {Header} from "../features/components/header/Header";
-import {authMe} from "../features/components/auth/Auth-reducer";
 import {CircularProgress, Paper} from "@mui/material";
-
-import './App.css';
+import {authMe} from "features/components/auth/auth-thunks";
+import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
+import {Header, RoutesPage} from "features/components/index-featues";
+import {ErrorSnackbar} from "common/index-common";
+import './app.css';
+import {isInitializedSelector} from "app/app-selectos";
 
 export const App: FC = () => {
     const dispatch = useAppDispatch()
-    const isInitialized = useAppSelector(state => state.app.isInitialized)
+    const isInitialized = useAppSelector(isInitializedSelector)
 
     useEffect(() => {
         dispatch(authMe())

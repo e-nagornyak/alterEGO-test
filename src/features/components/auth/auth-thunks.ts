@@ -1,35 +1,9 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {setAppStatus, setInitialized} from "../../../app/App-reducer";
-import {FormData} from "./Auth-shema";
+import {createAsyncThunk} from "@reduxjs/toolkit";
+import {setAppStatus, setInitialized} from "app/app-reducer";
 import {errorUtils} from "../../../utils/error-utils";
 import {AxiosError} from "axios";
-
-
-const initialState = {
-    isLogged: false
-}
-
-const slice = createSlice({
-    name: 'auth',
-    initialState: initialState,
-    reducers: {
-        setLogged(state, action: PayloadAction<{ isLogged: boolean }>) {
-            state.isLogged = action.payload.isLogged
-        }
-    },
-    extraReducers: (builder) => {
-        builder.addCase(logout.fulfilled, (state) => {
-            state.isLogged = false
-        })
-        builder.addCase(login.fulfilled, (state) => {
-            state.isLogged = true
-        })
-    }
-})
-
-export const authReducer = slice.reducer
-export const {setLogged} = slice.actions
-
+import {FormData} from "features/components/auth/auth-shema";
+import {setLogged} from "features/components/auth/auth-reducer";
 
 export const authMe = createAsyncThunk('auth/me', async (param, {dispatch}) => {
     dispatch(setAppStatus({status: 'loading'}))
@@ -69,4 +43,3 @@ export const logout = createAsyncThunk('auth/logout', async (param, {dispatch}) 
         errorUtils(error as AxiosError, dispatch)
     }
 })
-

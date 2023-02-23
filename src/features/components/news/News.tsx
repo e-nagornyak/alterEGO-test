@@ -1,20 +1,16 @@
-import React, {FC, useCallback, useEffect} from 'react';
-import {OutlinedBtn} from "../../../common/components/OutlinedBtn";
-import {CardItem} from "../../../common/components/CardItem";
-import {useAppSelector} from "../../../hooks/UseAppSelector";
-import {useAppDispatch} from "../../../hooks/UseAppDispatch";
-import {getMoreNews, getNews} from "./News-reducer";
+import React, {FC, memo, useCallback, useEffect} from 'react';
 import {useTranslation} from "react-i18next";
+import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
+import {CardItem, OutlinedBtn} from "common/index-common";
+import {getMoreNews, getNews} from "features/components/news/news-thunks";
 
-export const News: FC = () => {
+export const News: FC = memo(() => {
     const dispatch = useAppDispatch()
     const {t} = useTranslation()
 
     const news = useAppSelector(state => state.news.news)
 
-    const showMoreHandler = useCallback(() => {
-        dispatch(getMoreNews())
-    }, [dispatch])
+    const showMoreHandler = useCallback(() => dispatch(getMoreNews()), [dispatch])
 
     useEffect(() => {
         dispatch(getNews())
@@ -24,8 +20,9 @@ export const News: FC = () => {
         <h1>{t('news-title')}</h1>
         <div className={'news-box'}>{news.map(n =>
             <CardItem key={n.id} status={n.status} id={n.id} title={n.title} description={n.body}/>)}
+            {!news.length &&<h1>There is no news.</h1>}
         </div>
         <OutlinedBtn title={t('download-btn')} onClick={showMoreHandler}/>
     </>
-};
+})
 

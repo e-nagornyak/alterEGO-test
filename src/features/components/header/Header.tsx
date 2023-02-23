@@ -1,13 +1,11 @@
 import React, {ChangeEvent, FC, memo, useCallback} from 'react';
-import {OutlinedBtn} from "../../../common/components/OutlinedBtn";
-import {useAppStatusSelector} from "../../../hooks/Selectors";
-import {useAppDispatch} from "../../../hooks/UseAppDispatch";
-import {useAppSelector} from "../../../hooks/UseAppSelector";
-import {logout} from "../auth/Auth-reducer";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {AppBar, Box, LinearProgress, Switch, Toolbar} from "@mui/material";
+import {OutlinedBtn} from "common/index-common";
 
+import {AppBar, Box, LinearProgress, Switch, Toolbar} from "@mui/material";
+import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
+import {logout} from "features/components/auth/auth-thunks";
 
 export const Header: FC = memo(() => {
     const dispatch = useAppDispatch()
@@ -15,17 +13,14 @@ export const Header: FC = memo(() => {
     const {t, i18n} = useTranslation();
 
     const isLogged = useAppSelector(state => state.auth.isLogged)
-    const status = useAppStatusSelector()
+    const status = useAppSelector(state => state.app.status)
 
-
-    const logoutHandler = useCallback(() => dispatch(logout()),[dispatch])
-    const changeLangHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => i18n.changeLanguage(e.target.checked ? 'en' : 'ua'),[i18n])
+    const logoutHandler = useCallback(() => dispatch(logout()), [dispatch])
+    const changeLangHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => i18n.changeLanguage(e.target.checked ? 'en' : 'ua'), [i18n])
     const navigateToMainHandler = useCallback(() => navigate('/main'), [navigate])
     const navigateToNewsHandler = useCallback(() => navigate('/news'), [navigate])
     const navigateToProfileHandler = useCallback(() => navigate('/profile'), [navigate])
     const navigateToAuthHandler = useCallback(() => navigate('/auth'), [navigate])
-
-
 
     return <Box>
         <AppBar position="fixed">

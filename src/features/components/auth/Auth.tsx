@@ -1,14 +1,14 @@
 import React, {FC, useState} from 'react';
-import {useAppSelector} from "../../../hooks/UseAppSelector";
 import {Navigate} from "react-router-dom";
-import {Button, IconButton, InputAdornment, TextField} from "@mui/material";
-import {SubmitHandler, useForm} from "react-hook-form";
-import {AuthSchema, FormData} from "./Auth-shema";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {login} from "./Auth-reducer";
-import {useAppDispatch} from "../../../hooks/UseAppDispatch";
-import {Visibility, VisibilityOff} from "@mui/icons-material";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {AuthSchema, FormData} from "./auth-shema";
 import {useTranslation} from "react-i18next";
+
+import {Button, IconButton, InputAdornment, TextField} from "@mui/material";
+import {Visibility, VisibilityOff} from "@mui/icons-material";
+import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
+import {login} from "features/components/auth/auth-thunks";
 
 
 export const Auth: FC = () => {

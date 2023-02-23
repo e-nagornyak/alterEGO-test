@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {FC, memo} from 'react'
 import Snackbar from '@mui/material/Snackbar/Snackbar';
 import Alert from '@mui/material/Alert/Alert';
-import {useAppSelector} from "../../hooks/UseAppSelector";
-import {useAppDispatch} from "../../hooks/UseAppDispatch";
-import {setAppError} from "../../app/App-reducer";
+import {useAppSelector} from "hooks/useAppSelector";
+import {useAppDispatch} from "hooks/useAppDispatch";
+import {setAppError} from "app/app-reducer";
+import {errorSelector} from "app/app-selectos";
 
-export const ErrorSnackbar = () => {
-    const error = useAppSelector(state => state.app.error)
+export const ErrorSnackbar: FC = memo(() => {
+    const error = useAppSelector(errorSelector)
     const dispatch = useAppDispatch()
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -23,4 +24,4 @@ export const ErrorSnackbar = () => {
             </Snackbar>
         </div>
     )
-}
+})

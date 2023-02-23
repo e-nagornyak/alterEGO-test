@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
-import {useAppSelector} from "../../../hooks/UseAppSelector";
+import {useAppSelector} from "hooks/useAppSelector";
 import {Navigate} from "react-router-dom";
 import avatar from '../../../assets/images/avatar.png'
 
 export const Profile: FC = () => {
+    const status = useAppSelector(state => state.profile.status)
     const name = useAppSelector(state => state.profile.name)
     const email = useAppSelector(state => state.profile.email)
-    const status = useAppSelector(state => state.profile.status)
     const isLogged = useAppSelector(state => state.auth.isLogged)
 
     if (!isLogged) {

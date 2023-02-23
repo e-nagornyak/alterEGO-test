@@ -7,7 +7,7 @@ type PropsType = {
     className?: string
 }
 
-export const OutlinedBtn: FC<PropsType> = memo(({className,onClick, title}) => {
+export const    OutlinedBtn: FC<PropsType> = memo(({className,onClick, title}) => {
     return <Button className={className} color={'inherit'} onClick={onClick} variant="outlined">{title}</Button>
 });
 
