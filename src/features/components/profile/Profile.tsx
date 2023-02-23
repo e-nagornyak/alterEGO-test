@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {useAppSelector} from "hooks/useAppSelector";
 import {Navigate} from "react-router-dom";
 import avatar from '../../../assets/images/avatar.png'
+import {PATH} from "features/components/routes-page/routes-path";
 
 export const Profile: FC = () => {
     const status = useAppSelector(state => state.profile.status)
@@ -10,7 +11,7 @@ export const Profile: FC = () => {
     const isLogged = useAppSelector(state => state.auth.isLogged)
 
     if (!isLogged) {
-        return <Navigate to={'/auth'}/>
+        return <Navigate to={PATH.AUTH}/>
     }
 
     return <div className={'profile-wrapper'}>

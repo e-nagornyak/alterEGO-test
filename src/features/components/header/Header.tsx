@@ -6,6 +6,7 @@ import {OutlinedBtn} from "common/index-common";
 import {AppBar, Box, LinearProgress, Switch, Toolbar} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
 import {logout} from "features/components/auth/auth-thunks";
+import {PATH} from "features/components/routes-page/routes-path";
 
 export const Header: FC = memo(() => {
     const dispatch = useAppDispatch()
@@ -17,10 +18,10 @@ export const Header: FC = memo(() => {
 
     const logoutHandler = useCallback(() => dispatch(logout()), [dispatch])
     const changeLangHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => i18n.changeLanguage(e.target.checked ? 'en' : 'ua'), [i18n])
-    const navigateToMainHandler = useCallback(() => navigate('/main'), [navigate])
-    const navigateToNewsHandler = useCallback(() => navigate('/news'), [navigate])
-    const navigateToProfileHandler = useCallback(() => navigate('/profile'), [navigate])
-    const navigateToAuthHandler = useCallback(() => navigate('/auth'), [navigate])
+    const navigateToMainHandler = useCallback(() => navigate(PATH.MAIN), [navigate])
+    const navigateToNewsHandler = useCallback(() => navigate(PATH.NEWS), [navigate])
+    const navigateToProfileHandler = useCallback(() => navigate(PATH.PROFILE), [navigate])
+    const navigateToAuthHandler = useCallback(() => navigate(PATH.AUTH), [navigate])
 
     return <Box>
         <AppBar position="fixed">

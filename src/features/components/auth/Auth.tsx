@@ -9,6 +9,7 @@ import {Button, IconButton, InputAdornment, TextField} from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
 import {login} from "features/components/auth/auth-thunks";
+import {PATH} from "features/components/routes-page/routes-path";
 
 
 export const Auth: FC = () => {
@@ -31,7 +32,7 @@ export const Auth: FC = () => {
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault();
 
     if (isLogged) {
-        return <Navigate to={'/profile'}/>
+        return <Navigate to={PATH.PROFILE}/>
     }
 
     return <form className={'auth-form'} onSubmit={handleSubmit(onSubmit)}>
