@@ -6,10 +6,11 @@ import {AxiosError} from "axios";
 import {AppRootStateType} from "app/store/store";
 import {changeEntityStatus, setNews} from "features/components/news/news-reducer";
 
-export const getNews = createAsyncThunk('news/getNews', async (params, {dispatch}) => {
+export const getNews = createAsyncThunk('news/getNews', async (params, {dispatch, getState}) => {
     dispatch(setAppStatus({status: 'loading'}))
+    const {page} = (getState() as AppRootStateType).news
     try {
-        const res = await newsAPI.getNews()
+        const res = await newsAPI.getNews(page)
         dispatch(setAppStatus({status: 'succeeded'}))
         return res.data
     } catch (error) {
@@ -30,8 +31,7 @@ export const getMoreNews = createAsyncThunk('news/getMoreNews', async (params, {
     }
 })
 
-// This is an imitation of deleting a news item
-export const deleteNewsItem = createAsyncThunk('news/deleteNewsItem', async (id: number, {dispatch}) => {
+export const deleteNewsItem = createAsyncThunk('news/deleteNewsItem', async (id: string, {dispatch}) => {
     dispatch(setAppStatus({status: 'loading'}))
     try {
         dispatch(changeEntityStatus({id}))

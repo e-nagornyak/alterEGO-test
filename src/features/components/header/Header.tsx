@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 import {OutlinedBtn} from "common/index-common";
 
 import {AppBar, Box, LinearProgress, Switch, Toolbar} from "@mui/material";
-import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
+import {useAppDispatch, useAppSelector} from "hooks/index";
 import {logout} from "features/components/auth/auth-thunks";
 import {PATH} from "features/components/routes-page/routes-path";
 
@@ -24,7 +24,7 @@ export const Header: FC = memo(() => {
     const navigateToAuthHandler = useCallback(() => navigate(PATH.AUTH), [navigate])
 
     return <Box>
-        <AppBar position="fixed">
+        <AppBar color={'secondary'} position="fixed">
             <Toolbar>
                 <Box sx={{flexGrow: 1}}>
                     <span>UA</span>
@@ -41,7 +41,7 @@ export const Header: FC = memo(() => {
                     {isLogged && <OutlinedBtn title={t('logout-btn')} onClick={logoutHandler}/>}
                 </Box>
             </Toolbar>
-            {status === 'loading' && <LinearProgress color={'primary'}/>}
+            {status === 'loading' && <LinearProgress color={'warning'}/>}
         </AppBar>
     </Box>
 });

@@ -1,13 +1,22 @@
-import React, {FC, useEffect} from 'react';
-import {CircularProgress, Paper} from "@mui/material";
+import React, {FC, memo, useEffect} from 'react';
+import {CircularProgress, createTheme, Paper, ThemeProvider} from "@mui/material";
 import {authMe} from "features/components/auth/auth-thunks";
-import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
-import {Header, RoutesPage} from "features/components/index-featues";
+import {useAppDispatch, useAppSelector} from "hooks/index";
+import {Header, RoutesPage} from "features/components";
 import {ErrorSnackbar} from "common/index-common";
-import './app.css';
 import {isInitializedSelector} from "app/app-selectos";
+import './app.css';
 
-export const App: FC = () => {
+const theme = createTheme({
+    palette: {
+        secondary: {
+            main: '#2A2A2A'
+
+        },
+    },
+});
+
+export const App: FC = memo(() => {
     const dispatch = useAppDispatch()
     const isInitialized = useAppSelector(isInitializedSelector)
 
@@ -20,10 +29,12 @@ export const App: FC = () => {
     }
 
     return <div className={'app-wrapper'}>
-        <Header/>
-        <Paper className={'app-paper'}>
-            <RoutesPage/>
-        </Paper>
-        <ErrorSnackbar/>
+        <ThemeProvider theme={theme}>
+            <Header/>
+            <Paper className={'app-paper'}>
+                <RoutesPage/>
+            </Paper>
+            <ErrorSnackbar/>
+        </ThemeProvider>
     </div>
-}
+})

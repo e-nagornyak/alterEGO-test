@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
-import {Auth, Main, News, Page404, Profile} from "features/components/index-featues";
+import {Auth, Main, News, Page404, Profile} from "features/components";
 import {PATH} from "./routes-path";
 
 export const RoutesPage: FC = () => {

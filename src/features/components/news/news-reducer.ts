@@ -1,10 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {newsItem} from "api/types";
+import {NewsItem} from "api/types";
 import {deleteNewsItem, getMoreNews, getNews} from "features/components/news/news-thunks";
 
-
+export type newsDomainItem = NewsItem & { status: 'idle' | 'loading' }
 const initialState = {
-    news: [] as newsItem[],
+    news: [] as newsDomainItem[],
     page: 1,
 }
 
@@ -12,11 +12,11 @@ const slice = createSlice({
     name: 'news',
     initialState: initialState,
     reducers: {
-        setNews(state, action: PayloadAction<{ news: newsItem[] }>) {
+        setNews(state, action: PayloadAction<{ news: NewsItem[] }>) {
             action.payload.news.map(n => state.news.push({...n, status: 'idle'}))
         },
-        changeEntityStatus(state, action: PayloadAction<{ id: number }>) {
-            state.news = state.news.map(e => e.id === action.payload.id ? {...e, status: 'loading'} : e)
+        changeEntityStatus(state, action: PayloadAction<{ id: string }>) {
+            state.news = state.news.map(e => e.id === action.payload.id ? {...e,status: 'loading'} : e)
         },
     },
     extraReducers: (builder) => {
@@ -27,7 +27,9 @@ const slice = createSlice({
             state.page = state.page + 1
         })
         builder.addCase(getNews.fulfilled, (state, action) => {
-            state.news = action.payload.map((n: newsItem) => ({...n, status: 'idle'}))
+            if (action.payload) {
+                state.news = action.payload.map((n: NewsItem) => ({...n, status: 'idle'}))
+            }
         })
     }
 })

@@ -60,7 +60,7 @@
 
 .news-box p {
     display: -webkit-box;
-    -webkit-line-clamp: 8;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -72,16 +72,18 @@
     align-items: center;
     gap: 25px;
     padding: 15px;
-    max-width: 340px;
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 350px;
     position: relative;
 }
 
 .delete-news-btn {
     position: absolute;
-    right: 12px;
-    top: 8px;
+    right: -3px;
+    font-size: 18px;
+    top: 0;
+    background: transparent;
+    border-radius: 50%;
     cursor: pointer;
     border: none;
     font-weight: bold;

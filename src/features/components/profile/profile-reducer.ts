@@ -1,26 +1,30 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {fetchProfile} from "features/components/profile/profile-thunks";
+import {Profile} from "api/types";
 
 const initialState = {
-    name: 'Evhen Nahorniak',
-    email: 'test@gmail.com',
-    status: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, perferendis!'
+    id: '',
+    name: '',
+    email: '',
+    avatar: '',
+    status: '',
+    about: '',
 }
 
 const slice = createSlice({
     name: 'profile',
     initialState: initialState,
     reducers: {
-        changeName(state, action: PayloadAction<{ name: string }>) {
-            state.name = action.payload.name
-        },
-        emailEmail(state, action: PayloadAction<{ email: string }>) {
-            state.email = action.payload.email
-        },
-        emailStatus(state, action: PayloadAction<{ status: string }>) {
-            state.status = action.payload.status
-        },
+        updateProfileInfo(state, action: PayloadAction<{ profile: Profile }>) {
+              return action.payload.profile
+        }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchProfile.fulfilled, (state, action) => {
+            return action.payload
+        })
     }
 })
 
 export const profileReducer = slice.reducer
-export const {changeName, emailEmail, emailStatus} = slice.actions
+export const {updateProfileInfo} = slice.actions

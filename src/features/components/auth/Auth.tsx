@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 
 import {Button, IconButton, InputAdornment, TextField} from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
-import {useAppDispatch, useAppSelector} from "hooks/index-hooks";
+import {useAppDispatch, useAppSelector} from "hooks/index";
 import {login} from "features/components/auth/auth-thunks";
 import {PATH} from "features/components/routes-page/routes-path";
 
@@ -40,6 +40,7 @@ export const Auth: FC = () => {
             {...register('email')}
             label={t('email')}
             margin="normal"
+            color={'secondary'}
             fullWidth
             error={!!errors.email}
             helperText={errors.email?.message}
@@ -50,6 +51,7 @@ export const Auth: FC = () => {
             label={t('password')}
             margin="normal"
             fullWidth
+            color={'secondary'}
             type={showPassword ? 'text' : 'password'}
             error={!!errors.password}
             helperText={errors.password?.message}
@@ -66,7 +68,11 @@ export const Auth: FC = () => {
                         </IconButton>
                     </InputAdornment>
             }}/>
-        <Button fullWidth type={'submit'} variant={'contained'} color={'primary'}>
+        <Button
+            fullWidth
+            type={'submit'}
+            variant={'contained'}
+            color={'secondary'}>
             {t('submit-bnt')}
         </Button>
     </form>
