@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/alterEGO-test/static/css/main.60917c96.css",
-    "main.js": "/alterEGO-test/static/js/main.728aff4f.js",
+    "main.css": "/alterEGO-test/static/css/main.abac8109.css",
+    "main.js": "/alterEGO-test/static/js/main.a7c178f2.js",
     "static/js/787.7952a39a.chunk.js": "/alterEGO-test/static/js/787.7952a39a.chunk.js",
     "static/media/main-bg.jpeg": "/alterEGO-test/static/media/main-bg.be7665f876bbd9138501.jpeg",
     "static/media/avatar.png": "/alterEGO-test/static/media/avatar.e582e4ba7aae2cecd658.png",
     "index.html": "/alterEGO-test/index.html",
-    "main.60917c96.css.map": "/alterEGO-test/static/css/main.60917c96.css.map",
-    "main.728aff4f.js.map": "/alterEGO-test/static/js/main.728aff4f.js.map",
+    "main.abac8109.css.map": "/alterEGO-test/static/css/main.abac8109.css.map",
+    "main.a7c178f2.js.map": "/alterEGO-test/static/js/main.a7c178f2.js.map",
     "787.7952a39a.chunk.js.map": "/alterEGO-test/static/js/787.7952a39a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.60917c96.css",
-    "static/js/main.728aff4f.js"
+    "static/css/main.abac8109.css",
+    "static/js/main.a7c178f2.js"
   ]
 }
